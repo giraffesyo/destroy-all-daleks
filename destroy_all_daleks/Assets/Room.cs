@@ -9,12 +9,14 @@ public class Room : MonoBehaviour
     public bool hasWestExit;
     public bool hasNorthExit;
     public bool hasSouthExit;
-    public int numberOfExits = 0;
-    public int closedDoors = 0 ;
+    public int numberOfDoors;
     public bool partOfMap;
+    public int row;
+    public int col;
+    public float rotation;
  
 
-    DoorScript[] doors;
+    public DoorScript[] doors;
     void Start()
     {
         
@@ -33,131 +35,71 @@ public class Room : MonoBehaviour
         else
             return false;
     }
-    public void setConnected()
+    public void setNumberofDoors()
     {
-        doors[closedDoors].isConnected = true;
-        closedDoors++;
+        numberOfDoors = GetComponentsInChildren<DoorScript>().Length;
     }
-
     public int getNumberofDoors()
     {
-        DoorScript[] forDoorLength = this.GetComponentsInChildren<DoorScript>();
-        numberOfExits = forDoorLength.Length;
-        return numberOfExits;
+        return this.numberOfDoors;
+    }
+    public void setCol(int _col)
+    {
+        col = _col;
+    }
+    public int getCol()
+    {
+        return col;
+    }
+    public void setRow(int _row)
+    {
+        row = _row;
+    }
+    public int getRow()
+    {
+        return row;
     }
     public DoorScript[] getDoors()
     {
-        return GetComponentsInChildren<DoorScript>();
+        return doors;
     }
-    public void setDirection()
+    public void setDoors()
     {
-        
+        rotation = this.gameObject.transform.rotation.eulerAngles.y / 90f;
+
+        //rotation on N is 0
+        // E = 90
+        // S = 180
+        // W = 270
+
+         
         doors = this.GetComponentsInChildren<DoorScript>();
-        int index =0;
-        int northSouthIndex = 0;
-        int eastWestIndex = 0;
-        bool firstVerticalDirection = false;
-        bool firstHorizontalDirection = false;
-        float checkNorthSouth = 0;
-        float checkWestEast = 0;
+        setNumberofDoors();
         foreach (DoorScript door in doors)
         {
-           
-            if ( door.isUnset && (door.transform.rotation.eulerAngles.y % 180 == 0))
+            door.setRoom(this);
+            door.northDoor = false;
+            door.southDoor = false;
+            door.eastDoor = false;
+            door.westDoor = false;
+            int trueRotation = (int)door.gameObject.transform.rotation.eulerAngles.y;
+            if (trueRotation == 0)
             {
-                if (hasNorthExit && hasSouthExit)
-                {
-                    if (!firstVerticalDirection)
-                    {
-                        door.northDoor = true;
-                        door.isUnset = false;
-                        firstVerticalDirection = true;
-                        checkNorthSouth = door.gameObject.transform.position.z;
-                        northSouthIndex = index;
-
-                    }
-                    else
-                    {
-                        if (checkNorthSouth > door.gameObject.transform.position.z)
-                        {
-                            door.southDoor = true;
-                            door.isUnset = false;
-                        }
-                        else
-                        {
-                            doors[northSouthIndex].northDoor = false;
-                            doors[northSouthIndex].southDoor = true;
-                            door.northDoor = true;
-                            door.isUnset = false;
-                        }
-
-                    }
-                }
-                else if (hasNorthExit && !hasSouthExit)
-                {
-                    door.northDoor = true;
-                    door.isUnset = false;
-                }
-                else if (!hasNorthExit && hasSouthExit)
-                {
-                    door.southDoor = true;
-                    door.isUnset = false;
-                }
-                
-
-
+                door.northDoor = true;
             }
-            else if (door.isUnset && (door.transform.rotation.eulerAngles.y % 90 == 0))
+            else if (trueRotation == 180)
             {
-                if (hasWestExit && hasEastExit)
-                {
-                    if (!firstHorizontalDirection)
-                    {
-                        door.eastDoor = true;
-                        door.isUnset = false;
-                        firstHorizontalDirection = true;
-                        checkWestEast = door.gameObject.transform.position.x;
-                        eastWestIndex = index;
-
-                    }
-                    else
-                    {
-                        if (checkWestEast > door.gameObject.transform.position.x)
-                        {
-                            door.westDoor = true;
-                            door.isUnset = false;
-                        }
-                        else
-                        {
-                            doors[eastWestIndex].eastDoor = false;
-                            doors[eastWestIndex].westDoor = true;
-                            door.eastDoor = true;
-                            door.isUnset = false;
-                        }
-
-
-                    }
-                }
-                else if (hasEastExit && !hasWestExit)
-                {
-                    door.eastDoor = true;
-                    door.isUnset = false;
-                }
-                   
-                else if (!hasEastExit && hasWestExit)
-                {
-                    door.westDoor = true;
-                    door.isUnset = false;
-
-
-                }
-
+                door.southDoor = true;
             }
-             
-    index++;
-
+            else if (trueRotation == 90)
+            {
+                door.eastDoor = true;
+            }
+            else
+            {
+                door.westDoor = true;
+            }
         }
-      
     }
     public void hasDirection()
     {
@@ -174,79 +116,6 @@ public class Room : MonoBehaviour
                 hasSouthExit = true;
         }
     }
-    public void checkDeadendError(Room[,] array, int row, int col)
-    {
-        
-        int size = (int)Mathf.Sqrt(array.Length);
-        if (array[row, col].isDeadend())
-        {
-            if (row < size - 1 && array[row + 1, col] != null)
-            {
-                if (array[row + 1, col].isDeadend() && array[row, col].hasSouthExit)
-                {
-                    Destroy(array[row + 1, col].gameObject);
-                    Destroy(this.gameObject);
-
-                }
-            }
-            if (row > 0 && array[row - 1, col] != null)
-            {
-                if (array[row -1, col].isDeadend() && array[row, col].hasNorthExit)
-                {
-                    Destroy(array[row - 1, col].gameObject);
-                    Destroy(this.gameObject);
-                }
-            }
-            if (col < size - 1 && array[row, col + 1] != null)
-            {
-                if (array[row, col+1].isDeadend() && array[row, col].hasEastExit)
-                {
-                    Destroy(array[row, col+1].gameObject);
-                    Destroy(this.gameObject);
-                }
-            }
-            if (col > 0 && array[row, col - 1] != null)
-            {
-                if (array[row, col -1].isDeadend() && array[row, col].hasWestExit)
-                {
-                    Destroy(array[row, col-1].gameObject);
-                    Destroy(this.gameObject);
-                }
-            }
-        }
- 
-    }
     
-    public void setDirectionExplicit(string direction)
-    {
-        foreach (DoorScript door in doors)
-        {
-            if (direction.Equals("north")  && door.isUnset)
-            {
-                door.northDoor = true;
-                door.isUnset = false;
-                break;
-            }
-            if (direction.Equals("east") && door.isUnset)
-            {
-                door.eastDoor = true;
-                door.isUnset = false;
-                break;
-            }
-            if (direction.Equals("west") && door.isUnset)
-            {
-                door.westDoor = true;
-                door.isUnset = false;
-                break;
-            }
-            if (direction.Equals("south") && door.isUnset)
-            {
-                door.southDoor = true;
-                door.isUnset = false;
-                break;
-            }
-        }
-
-    }
 
 }

@@ -444,7 +444,12 @@ MonoBehaviour:
   hasWestExit: 0
   hasNorthExit: 0
   hasSouthExit: 1
-  numberOfExits: 0
+  numberOfDoors: 0
+  partOfMap: 0
+  row: 0
+  col: 0
+  rotation: 0
+  doors: []
 --- !u!1 &5884664622380930490
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +752,7 @@ PrefabInstance:
     - target: {fileID: 2931831447089269406, guid: 5a2bffe6621935748b1dc14fbb376404,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2931831447089269406, guid: 5a2bffe6621935748b1dc14fbb376404,
         type: 3}
@@ -757,7 +762,7 @@ PrefabInstance:
     - target: {fileID: 2931831447089269406, guid: 5a2bffe6621935748b1dc14fbb376404,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2931831447089269406, guid: 5a2bffe6621935748b1dc14fbb376404,
         type: 3}
@@ -772,7 +777,7 @@ PrefabInstance:
     - target: {fileID: 2931831447089269406, guid: 5a2bffe6621935748b1dc14fbb376404,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2931831447089269406, guid: 5a2bffe6621935748b1dc14fbb376404,
         type: 3}

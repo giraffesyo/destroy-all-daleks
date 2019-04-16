@@ -92,14 +92,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1452234765973467033, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
+    - target: {fileID: 2886679051519397377, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
         type: 3}
-      propertyPath: hasNorthExit
-      value: 1
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 1452234765973467033, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
+    - target: {fileID: 2886679051519397377, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
         type: 3}
-      propertyPath: hasSouthExit
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886679051519397377, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886679051519397377, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3397723677949307167, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
@@ -108,6 +118,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397723677949307167, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
+        type: 3}
+      propertyPath: hasSouthExit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452234765973467033, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
+        type: 3}
+      propertyPath: hasNorthExit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452234765973467033, guid: 3ee4a462411ebae46a0e53dcc7a0ff3f,
         type: 3}
       propertyPath: hasSouthExit
       value: 0
