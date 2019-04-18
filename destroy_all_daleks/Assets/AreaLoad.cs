@@ -85,7 +85,7 @@ public class AreaLoad : MonoBehaviour
                 if (array[i, j] != null)
                 {
                     gObj = Instantiate(array[i, j].gameObject);
-                    gObj.gameObject.transform.position = new Vector3(11f * i, 0, 11f * j);
+                    gObj.gameObject.transform.position = new Vector3(10.6f * i, 0, 10.6f * j);
                 }
                
             }
@@ -180,7 +180,6 @@ public class AreaLoad : MonoBehaviour
                     }
                 }
             }
-
             if (col != 0 && array[row, col - 1] != null)
             {
                 if (array[row, col - 1].hasNorthExit)
@@ -207,7 +206,6 @@ public class AreaLoad : MonoBehaviour
                     }
                 }
             }
-
 
             if (row == size - 1)
             {
@@ -311,7 +309,7 @@ public class AreaLoad : MonoBehaviour
                 if (finalRoomCanidates.Count != 0 && !island)
                 {
                     
-                    current = finalRoomCanidates[Random.Range(0, finalRoomCanidates.Count)];           
+                    current = finalRoomCanidates[Random.Range(0, finalRoomCanidates.Count-1)];           
                     if (array[row, col] == null)
                     {
                         array[row, col] = current;
@@ -340,9 +338,10 @@ public class AreaLoad : MonoBehaviour
             else
             {
 
-                
+                current.setCol(col);
+                current.setRow(row);
                 current.setDoors();
-               
+
             }
                 
 

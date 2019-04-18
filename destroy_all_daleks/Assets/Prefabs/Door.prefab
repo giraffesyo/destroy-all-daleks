@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4818117172306529799}
   - component: {fileID: 5163984164827921293}
   - component: {fileID: 4358374355173336747}
+  - component: {fileID: 6789191956993362210}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -104,7 +105,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4358374355173336747
 MonoBehaviour:
@@ -118,3 +119,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e08f71c73f5d146a90b43ce8ad43e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentRoom: {fileID: 0}
+  northDoor: 0
+  southDoor: 0
+  westDoor: 0
+  eastDoor: 0
+  direction: 0
+  connectedDoor: {fileID: 0}
+--- !u!95 &6789191956993362210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020279803796039662}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1297ae618bd8eb842918a23539134f71, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
