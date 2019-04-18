@@ -94,7 +94,7 @@ public class PlayerUIScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)){
             Pause();
         }
-        TestAction();
+        //TestAction();
 
         Breath();
         HeartBeat();
