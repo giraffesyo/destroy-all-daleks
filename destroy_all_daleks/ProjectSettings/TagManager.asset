@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Open
   - Closed
+  - HUD
+  - Pause Menu
+  - Start Menu
+  - Game Over Menu
   layers:
   - Default
   - TransparentFX
