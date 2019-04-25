@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: hasWestExit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7354081345435305728, guid: a2a95b961f6247240a86681c8f32342b,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 125837230726411033, guid: a2a95b961f6247240a86681c8f32342b,
         type: 3}
       propertyPath: m_LocalRotation.x

@@ -82,6 +82,11 @@ PrefabInstance:
       propertyPath: hasSouthExit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5035697538653495259, guid: f438961cf1b57224594cc5ee56c34ddd,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4964365352583376927, guid: f438961cf1b57224594cc5ee56c34ddd,
         type: 3}
       propertyPath: hasWestExit

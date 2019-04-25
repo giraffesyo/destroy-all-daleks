@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5882497386657546149, guid: 7ea0a4abeff819e4591b53b43bebbbe8,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 5405953440793313125, guid: 7ea0a4abeff819e4591b53b43bebbbe8,
         type: 3}
       propertyPath: hasNorthExit
