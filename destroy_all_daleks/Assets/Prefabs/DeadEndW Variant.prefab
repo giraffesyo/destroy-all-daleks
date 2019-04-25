@@ -67,21 +67,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1887199909262415123, guid: f438961cf1b57224594cc5ee56c34ddd,
-        type: 3}
-      propertyPath: hasWestExit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887199909262415123, guid: f438961cf1b57224594cc5ee56c34ddd,
-        type: 3}
-      propertyPath: hasSouthExit
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5884664622380930490, guid: f438961cf1b57224594cc5ee56c34ddd,
         type: 3}
       propertyPath: m_Name
       value: DeadEnd
       objectReference: {fileID: 0}
+    - target: {fileID: 1887199909262415123, guid: f438961cf1b57224594cc5ee56c34ddd,
+        type: 3}
+      propertyPath: hasWestExit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887199909262415123, guid: f438961cf1b57224594cc5ee56c34ddd,
+        type: 3}
+      propertyPath: hasSouthExit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4964365352583376927, guid: f438961cf1b57224594cc5ee56c34ddd,
         type: 3}
       propertyPath: hasWestExit
@@ -91,6 +91,21 @@ PrefabInstance:
         type: 3}
       propertyPath: hasSouthExit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951193663428901334, guid: f438961cf1b57224594cc5ee56c34ddd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951193663428901334, guid: f438961cf1b57224594cc5ee56c34ddd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951193663428901334, guid: f438961cf1b57224594cc5ee56c34ddd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f438961cf1b57224594cc5ee56c34ddd, type: 3}

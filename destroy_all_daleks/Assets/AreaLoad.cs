@@ -8,11 +8,12 @@ public class AreaLoad : MonoBehaviour
     public GameObject empty;
     public GameObject roomPrefabs;
     public GameObject[] roomArray;
-
-
+    public GameObject parentObject;
+    public bool tester = false;
 
     private Room[,] array;
     public Room[] deadendRooms;
+    Room startingRoomScript;
 
     public GameObject deadEnds;
     private Room[] roomsGlobal;
@@ -40,13 +41,12 @@ public class AreaLoad : MonoBehaviour
         deadendRooms = deadEnds.GetComponentsInChildren<Room>();
         roomsGlobal = roomPrefabs.GetComponentsInChildren<Room>();
         roomArray = new GameObject[roomsGlobal.Length];
-        Room startingRoomScript = startingRoom.GetComponent<Room>();
+        startingRoomScript = startingRoom.GetComponent<Room>();
         startingRoomScript.setDoors();
         startingRoomScript.setRow(size / 2);
         startingRoomScript.setCol(size / 2);
         foreach(Room room in roomsGlobal)
         {
-           
             room.setDoors();
             roomArray[i] = room.gameObject;
             i++;
@@ -70,11 +70,28 @@ public class AreaLoad : MonoBehaviour
         BuildLevel(startingRoomScript);
         GenerateLevel();
     }
+    public void reGenerate()
+    {
+        tester = false;
+        firstIteration = true;
+        Room[] roomsToDestroy = parentObject.GetComponentsInChildren<Room>();
+        foreach(Room room in roomsToDestroy)
+        {
+            Destroy(room.gameObject);
+        }
+        array = new Room[size, size];
+        BuildLevel(startingRoomScript);
+        GenerateLevel();
 
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if (tester)
+        {
+            reGenerate();
+        }
+    
     }
     public void GenerateLevel()
     {
@@ -86,6 +103,7 @@ public class AreaLoad : MonoBehaviour
                 {
                     gObj = Instantiate(array[i, j].gameObject);
                     gObj.gameObject.transform.position = new Vector3(10.6f * i, 0, 10.6f * j);
+                    gObj.transform.parent = parentObject.transform;
                 }
                
             }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Animator anim;
     public Room parentRoom;
     public bool northDoor;
     public bool southDoor;
@@ -60,5 +61,22 @@ public class DoorScript : MonoBehaviour
         direction = _direction;
         setOrientation();
         
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+     
+        if (collision.gameObject.tag.Equals("Player")|| (collision.gameObject.tag.Equals("enemy")))
+        {
+            anim.Play("OpenClose");
+            Debug.Log("Temp");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player") || (other.gameObject.tag.Equals("enemy")))
+        {
+            anim.Play("close");
+            Debug.Log("Temp");
+        }
     }
 }
