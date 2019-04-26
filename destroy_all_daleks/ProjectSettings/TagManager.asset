@@ -10,6 +10,7 @@ TagManager:
   - Pause Menu
   - Start Menu
   - Game Over Menu
+  - player
   layers:
   - Default
   - TransparentFX
