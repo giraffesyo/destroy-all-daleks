@@ -24,6 +24,7 @@ public class PauseMenuScript : MonoBehaviour
         isSettingToggles = false;
         hudScript = hud.GetComponent<PlayerUIScript>();
 
+        
         hud.SetActive(false);
     }
 
@@ -34,6 +35,7 @@ public class PauseMenuScript : MonoBehaviour
         dalekKilledFloor.text = $"{ hudScript.daleksKilled}/{ hudScript.totalDaleks} destroyed";
 
         SetToggles();
+        Cursor.visible = true;
     }
 
     private void Start()

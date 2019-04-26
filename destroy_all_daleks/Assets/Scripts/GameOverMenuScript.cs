@@ -29,6 +29,7 @@ public class GameOverMenuScript : MonoBehaviour
         floorNum.text = $"Floor {hudScript.currentFloor}";
         totalKilled.text = $"{hudScript.totalDaleksKilled} destroyed overall";
         dalekKilledFloor.text = $"{ hudScript.daleksKilled}/{ hudScript.totalDaleks} destroyed";
+        Cursor.visible = true;
     }
 
     public void NewGame()

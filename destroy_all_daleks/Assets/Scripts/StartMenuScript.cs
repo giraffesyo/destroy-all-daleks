@@ -29,6 +29,11 @@ public class StartMenuScript : MonoBehaviour
         breathToggle = toggles[2];
     }
 
+    private void OnEnable()
+    {
+        Cursor.visible = true;
+    }
+
     private void Start()
     {
         AudioSource[] toAssign = this.gameObject.GetComponents<AudioSource>();

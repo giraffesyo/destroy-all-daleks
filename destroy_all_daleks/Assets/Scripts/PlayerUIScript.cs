@@ -67,7 +67,7 @@ public class PlayerUIScript : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject GameOverMenu;
 
-
+    
     //sides: 0-left, 1-forward, 2-right, 3-behind, 4-all, 5-heal
     private enum Side { left, forward, right, behind, all, heal }
 
@@ -87,6 +87,8 @@ public class PlayerUIScript : MonoBehaviour
     private void OnEnable()
     {
         invincible = false;
+        Cursor.visible = false;
+
     }
 
     void Update()
