@@ -12,9 +12,10 @@ Sound files are are inside Resources because unity allows a method to locate fil
 - There are a lot of dalek audio options, not sure about human
 - Start screen needs option to select male or female player
 
-- Known Bugs:
+## Known Bugs:
+ - The player's shadow only shows the gun
 
-- Fixed Bugs:
+## Fixed Bugs:
 
 Acknowledgements:
 [FPS Hand](https://3dwarehouse.sketchup.com/model/73561fe6e8dbb7157ec5e1757834b885/Gun-With-Hand)
