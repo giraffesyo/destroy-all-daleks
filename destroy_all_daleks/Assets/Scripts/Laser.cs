@@ -12,32 +12,39 @@ public class Laser : MonoBehaviour
     public float fadeTime = 0.1f;
     Transform player;
 
+    EnemyController ec;
+    bool isDead;
+
     void Awake()
     {
-        line = GetComponentInChildren<LineRenderer>();
+        line = GetComponent<LineRenderer>();
         line.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         line.endWidth = 0.1f;
         line.startWidth = 0.07f;
-
+        ec = GetComponentInParent<EnemyController>();
     }
 
     void Update()
     {
-        var distance = Vector3.Distance(player.transform.position, this.transform.position);
-
-        if (distance > 7 || reloaded == false)
+        isDead = ec.isDead;
+        if (!isDead)
         {
-            canShoot = false;
-        }
-        else { canShoot = true;  }
+            var distance = Vector3.Distance(player.transform.position, this.transform.position);
 
-        if (canShoot)
-        {
-            canShoot = false;
-            reloaded = false;
-            StopCoroutine("Shoot");
-            StartCoroutine("Shoot");
+            if (distance > 7 || reloaded == false)
+            {
+                canShoot = false;
+            }
+            else { canShoot = true; }
+
+            if (canShoot)
+            {
+                canShoot = false;
+                reloaded = false;
+                StopCoroutine("Shoot");
+                StartCoroutine("Shoot");
+            }
         }
     }
 
