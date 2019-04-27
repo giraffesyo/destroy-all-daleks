@@ -8,12 +8,13 @@ Sound files are are inside Resources because unity allows a method to locate fil
 ## Work that needs to be done:
 
 - Music Toggle doesn't turn off music yet
-- Minimap camera and pointer need to follow and turn with player
 - There are a lot of dalek audio options, not sure about human
 - Start screen needs option to select male or female player
 
 ## Known Bugs:
  - The player's shadow only shows the gun
+ - Minimap left / right are inverted
+ - High rotation speeds leads to dalek leaning backwards / sideways
 
 ## Fixed Bugs:
 
