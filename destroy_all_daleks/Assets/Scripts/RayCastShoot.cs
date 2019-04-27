@@ -48,15 +48,17 @@ public class RayCastShoot : MonoBehaviour
                 //    hit.rigidbody.AddForce(-hit.normal * 100f);
                 //}
 
-                // code to kill dalek   // need to work out how to keep track of damage seperately (or just assume that they won't
-                // fight more than one at a time and just use a counter
-                EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                ec.isDead = true;
-
-
                 lineRenderer.SetPosition(0, gunEnd.position);
                 lineRenderer.SetPosition(1, hit.point);
                 Instantiate(hitParticles, hit.point, Quaternion.identity);
+
+                // code to kill dalek   // need to work out how to keep track of damage seperately (or just assume that they won't
+                // fight more than one at a time and just use a counter
+                if (hit.collider.gameObject.CompareTag("enemy"))
+                {
+                    EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
+                    ec.isDead = true;
+                }
             }
             StartCoroutine(ShotEffect());
         }
