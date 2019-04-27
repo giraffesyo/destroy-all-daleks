@@ -514,9 +514,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ecdf8da71366d44ba791085319c81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMesh: {fileID: 0}
   startingRoom: {fileID: 4220958099809024207, guid: ea12ba71cdc64e240a479d67ee821ccd,
     type: 3}
-  empty: {fileID: 1476219305190492823, guid: e4edcfa9a9c57664ab4c67fa760f3bf2, type: 3}
+  empty: {fileID: 5532867932158707831, guid: e4edcfa9a9c57664ab4c67fa760f3bf2, type: 3}
   roomPrefabs: {fileID: 3849483575095976294, guid: 6acdeec2f3fbc0647a0fc8f982b7039b,
     type: 3}
   roomArray: []
