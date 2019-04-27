@@ -312,6 +312,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656790321}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1444301278 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3180509021409749689, guid: ab51cd6842da86642aa67945e74e58a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6083295822089977789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1555897538
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,5 +588,20 @@ PrefabInstance:
       propertyPath: parentObject
       value: 
       objectReference: {fileID: 117294333}
+    - target: {fileID: 3180509021409749691, guid: ab51cd6842da86642aa67945e74e58a1,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1847
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180509021409749665, guid: ab51cd6842da86642aa67945e74e58a1,
+        type: 3}
+      propertyPath: minimap
+      value: 
+      objectReference: {fileID: 1444301278}
+    - target: {fileID: 6083295821489152299, guid: ab51cd6842da86642aa67945e74e58a1,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2871
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab51cd6842da86642aa67945e74e58a1, type: 3}
