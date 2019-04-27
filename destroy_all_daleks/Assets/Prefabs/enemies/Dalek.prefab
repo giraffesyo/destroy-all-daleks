@@ -1133,7 +1133,7 @@ Transform:
   m_GameObject: {fileID: 1142580878601096336}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 10.750767, y: 0, z: -0.43466014}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.3}
   m_Children:
   - {fileID: 1866262075664398215}
   - {fileID: 6268816323985091149}
@@ -1181,7 +1181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac8d8ef736d6473590b44f1715487da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  rotationSpeed: 1
+  startChaseRange: 10
 --- !u!195 &5652694635633323408
 NavMeshAgent:
   m_ObjectHideFlags: 0

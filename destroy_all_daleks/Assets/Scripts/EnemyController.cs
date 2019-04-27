@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     Transform player;
     NavMeshAgent nav;
     public float rotationSpeed = .01f;
+    public float startChaseRange = 10.0f;
 
     void Awake()
     {
@@ -17,14 +18,16 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        nav.SetDestination(player.position);
-    }
-
-    void LookAtPlayer()
-    {
-        Vector3 direction = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-
+        var distance = Vector3.Distance(player.transform.position, this.transform.position);
+        if (distance <= startChaseRange)
+        {
+            nav.SetDestination(player.position);
+        }
+        if (distance <= 4)
+        {
+            Vector3 direction = (player.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        }
     }
 }
