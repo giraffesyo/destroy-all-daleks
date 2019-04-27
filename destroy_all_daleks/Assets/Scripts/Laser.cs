@@ -5,7 +5,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     LineRenderer line;
-    public int shotDistance = 10;
+    public int shotDistance = 20;
     bool canShoot = false;
     bool reloaded = true;
     public float reloadTime = 2.0f;
@@ -17,6 +17,9 @@ public class Laser : MonoBehaviour
         line = GetComponentInChildren<LineRenderer>();
         line.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        line.endWidth = 0.1f;
+        line.startWidth = 0.07f;
+
     }
 
     void Update()
@@ -36,16 +39,29 @@ public class Laser : MonoBehaviour
             StopCoroutine("Shoot");
             StartCoroutine("Shoot");
         }
-
-        Ray ray = new Ray(transform.position, transform.forward);
-        line.SetPosition(0, ray.origin);
-        line.SetPosition(1, ray.GetPoint(shotDistance));
     }
 
     IEnumerator Shoot()
     {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        line.SetPosition(0, ray.origin);
+
+        if (Physics.Raycast(ray, out hit, shotDistance))
+        {
+            line.SetPosition(1, hit.point);
+            if (hit.transform == player)
+            {
+                //damagePlayer();
+                Debug.Log("Hit the player");
+            }
+        }
+        else
+        {
+            line.SetPosition(1, ray.GetPoint(shotDistance));
+        }
+
         line.enabled = true;
-        //damagePlayer();
         yield return new WaitForSeconds(fadeTime);
         line.enabled = false;
 
