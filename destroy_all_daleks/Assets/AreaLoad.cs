@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AreaLoad : MonoBehaviour
 {
+    public NavMeshSurface[] floors;
     public GameObject startingRoom;
     public GameObject empty;
     public GameObject roomPrefabs;
@@ -108,6 +110,12 @@ public class AreaLoad : MonoBehaviour
                
             }
         }
+        floors = parentObject.GetComponentsInChildren<NavMeshSurface>();
+        foreach(NavMeshSurface floor in floors)
+        {
+            floor.BuildNavMesh();
+        }
+
     }
 
     public List<Room> checkSurroundings(int row, int col)
