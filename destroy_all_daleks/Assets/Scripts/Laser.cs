@@ -10,6 +10,8 @@ public class Laser : MonoBehaviour
     bool reloaded = true;
     public float reloadTime = 2.0f;
     public float fadeTime = 0.1f;
+
+    private AudioSource laserSound;
     Transform player;
 
     EnemyController ec;
@@ -23,6 +25,7 @@ public class Laser : MonoBehaviour
         line.endWidth = 0.1f;
         line.startWidth = 0.07f;
         ec = GetComponentInParent<EnemyController>();
+        laserSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -53,6 +56,7 @@ public class Laser : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         line.SetPosition(0, ray.origin);
+        laserSound.Play();
 
         if (Physics.Raycast(ray, out hit, shotDistance))
         {
