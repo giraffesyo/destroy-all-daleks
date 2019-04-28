@@ -34,5 +34,15 @@ public class EnemyController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
             }
         }
+        else
+        {
+            StartCoroutine("DestroyDalek");
+        }
+    }
+
+    IEnumerator DestroyDalek()
+    {
+        yield return new WaitForSeconds(3.0f);
+        Destroy(this.gameObject);
     }
 }

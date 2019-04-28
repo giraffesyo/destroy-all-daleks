@@ -6948,7 +6948,7 @@ GameObject:
   - component: {fileID: 735150791521298175}
   - component: {fileID: 4088444205990296067}
   - component: {fileID: 4106080516089441551}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

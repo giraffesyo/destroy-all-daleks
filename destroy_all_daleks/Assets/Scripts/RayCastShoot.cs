@@ -18,6 +18,7 @@ public class RayCastShoot : MonoBehaviour
     private WaitForSeconds shotLength = new WaitForSeconds(.07f);
     private AudioSource source;
     private float nextFireTime;
+    private int damageToEnemy = 0;
 
     void Awake()
     {
@@ -29,13 +30,14 @@ public class RayCastShoot : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
+        //Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
+        Ray ray = new Ray(transform.position, transform.forward);
 
         if (Input.GetButtonDown("Fire1") && Time.time > nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
 
-            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, range))
+            if (Physics.Raycast(ray, out hit, range))
             {
                 //IDamageable dmgScript = hit.collider.gameObject.GetComponent<IDamageable>();
                 //if (dmgScript != null)
@@ -48,17 +50,31 @@ public class RayCastShoot : MonoBehaviour
                 //    hit.rigidbody.AddForce(-hit.normal * 100f);
                 //}
 
-                lineRenderer.SetPosition(0, gunEnd.position);
-                lineRenderer.SetPosition(1, hit.point);
+                lineRenderer.SetPosition(0, ray.origin);
+                if (Physics.Raycast(ray, out hit, range))
+                {
+                    lineRenderer.SetPosition(1, hit.point);
+                    if (hit.collider.gameObject.CompareTag("enemy"))
+                    {
+                        //damageDalek();
+                        this.damageToEnemy++;
+                        if (this.damageToEnemy >= 10)
+                        {
+                            EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
+                            ec.isDead = true;
+                        }
+                    }
+                }
+                else
+                {
+                    lineRenderer.SetPosition(1, ray.GetPoint(range));
+                }
+                //lineRenderer.SetPosition(0, gunEnd.position);
+                //lineRenderer.SetPosition(1, hit.point);
                 //Instantiate(hitParticles, hit.point, Quaternion.identity);
 
                 // code to kill dalek   // need to work out how to keep track of damage seperately (or just assume that they won't
                 // fight more than one at a time and just use a counter
-                if (hit.collider.gameObject.CompareTag("enemy"))
-                {
-                    EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                    ec.isDead = true;
-                }
             }
             StartCoroutine(ShotEffect());
         }
