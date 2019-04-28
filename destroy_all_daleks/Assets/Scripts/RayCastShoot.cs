@@ -20,12 +20,15 @@ public class RayCastShoot : MonoBehaviour
     private float nextFireTime;
     private int damageToEnemy = 0;
 
+    PlayerUIScript HUD;
+
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
         source = GetComponent<AudioSource>();
         fpsCam = GetComponentInParent<Camera>();
         lineRenderer.startWidth = 0.025f;
+        HUD = GameObject.FindGameObjectWithTag("HUD").GetComponent<PlayerUIScript>();
     }
 
     void Update()
@@ -36,6 +39,7 @@ public class RayCastShoot : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && Time.time > nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
+            HUD.Fire();
 
             lineRenderer.SetPosition(0, ray.origin);
             if (Physics.Raycast(ray, out hit, range))
@@ -49,18 +53,21 @@ public class RayCastShoot : MonoBehaviour
                     {
                         EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
                         ec.isDead = true;
+                        HUD.DalekKilled();
                         this.damageToEnemy = 0;
                     }
                     else if (hit.collider.gameObject.name == "Dalek - Blue" && this.damageToEnemy >= 10)
                     {
                         EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
                         ec.isDead = true;
+                        HUD.DalekKilled();
                         this.damageToEnemy = 0;
                     }
                     else if (hit.collider.gameObject.name == "Dalek - Gold" && this.damageToEnemy >= 15)
                     {
                         EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
                         ec.isDead = true;
+                        HUD.DalekKilled();
                         this.damageToEnemy = 0;
                     }
                 }
