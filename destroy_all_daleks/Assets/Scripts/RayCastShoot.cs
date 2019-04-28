@@ -25,6 +25,7 @@ public class RayCastShoot : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         source = GetComponent<AudioSource>();
         fpsCam = GetComponentInParent<Camera>();
+        lineRenderer.startWidth = 0.025f;
     }
 
     void Update()
@@ -36,46 +37,41 @@ public class RayCastShoot : MonoBehaviour
         {
             nextFireTime = Time.time + fireRate;
 
+            lineRenderer.SetPosition(0, ray.origin);
             if (Physics.Raycast(ray, out hit, range))
             {
-                lineRenderer.SetPosition(0, ray.origin);
-                if (Physics.Raycast(ray, out hit, range))
+                lineRenderer.SetPosition(1, hit.point);
+                if (hit.collider.gameObject.CompareTag("enemy"))
                 {
-                    lineRenderer.SetPosition(1, hit.point);
-                    if (hit.collider.gameObject.CompareTag("enemy"))
+                    //damageDalek();
+                    this.damageToEnemy++;
+                    if (hit.collider.gameObject.name == "Dalek" && this.damageToEnemy >= 5)
                     {
-                        //damageDalek();
-                        this.damageToEnemy++;
-                        if (hit.collider.gameObject.name == "Dalek" && this.damageToEnemy >= 5)
-                        {
-                            EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                            ec.isDead = true;
-                            this.damageToEnemy = 0;
-                        }
-                        else if (hit.collider.gameObject.name == "Dalek - Blue" && this.damageToEnemy >= 10)
-                        {
-                            EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                            ec.isDead = true;
-                            this.damageToEnemy = 0;
-                        }
-                        else if (hit.collider.gameObject.name == "Dalek - Gold" && this.damageToEnemy >= 15)
-                        {
-                            EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                            ec.isDead = true;
-                            this.damageToEnemy = 0;
-                        }
+                        EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
+                        ec.isDead = true;
+                        this.damageToEnemy = 0;
+                    }
+                    else if (hit.collider.gameObject.name == "Dalek - Blue" && this.damageToEnemy >= 10)
+                    {
+                        EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
+                        ec.isDead = true;
+                        this.damageToEnemy = 0;
+                    }
+                    else if (hit.collider.gameObject.name == "Dalek - Gold" && this.damageToEnemy >= 15)
+                    {
+                        EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
+                        ec.isDead = true;
+                        this.damageToEnemy = 0;
                     }
                 }
-                else
-                {
-                    lineRenderer.SetPosition(1, ray.GetPoint(range));
-                }
-                //Instantiate(hitParticles, hit.point, Quaternion.identity);
-
             }
+            else
+            {
+                lineRenderer.SetPosition(1, ray.GetPoint(range));
+            }
+            //Instantiate(hitParticles, hit.point, Quaternion.identity);
             StartCoroutine(ShotEffect());
         }
-
     }
 
     private IEnumerator ShotEffect()
