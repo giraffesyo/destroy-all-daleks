@@ -30,7 +30,6 @@ public class RayCastShoot : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        //Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
         Ray ray = new Ray(transform.position, transform.forward);
 
         if (Input.GetButtonDown("Fire1") && Time.time > nextFireTime)
@@ -39,17 +38,6 @@ public class RayCastShoot : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, range))
             {
-                //IDamageable dmgScript = hit.collider.gameObject.GetComponent<IDamageable>();
-                //if (dmgScript != null)
-                //{
-                //    dmgScript.Damage(damage, hit.point);
-                //}
-
-                //if (hit.rigidbody != null)
-                //{
-                //    hit.rigidbody.AddForce(-hit.normal * 100f);
-                //}
-
                 lineRenderer.SetPosition(0, ray.origin);
                 if (Physics.Raycast(ray, out hit, range))
                 {
@@ -58,7 +46,19 @@ public class RayCastShoot : MonoBehaviour
                     {
                         //damageDalek();
                         this.damageToEnemy++;
-                        if (this.damageToEnemy >= 10)
+                        if (hit.collider.gameObject.name == "Dalek" && this.damageToEnemy >= 5)
+                        {
+                            EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
+                            ec.isDead = true;
+                            this.damageToEnemy = 0;
+                        }
+                        else if (hit.collider.gameObject.name == "Dalek - Blue" && this.damageToEnemy >= 10)
+                        {
+                            EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
+                            ec.isDead = true;
+                            this.damageToEnemy = 0;
+                        }
+                        else if (hit.collider.gameObject.name == "Dalek - Gold" && this.damageToEnemy >= 15)
                         {
                             EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
                             ec.isDead = true;
@@ -70,12 +70,8 @@ public class RayCastShoot : MonoBehaviour
                 {
                     lineRenderer.SetPosition(1, ray.GetPoint(range));
                 }
-                //lineRenderer.SetPosition(0, gunEnd.position);
-                //lineRenderer.SetPosition(1, hit.point);
                 //Instantiate(hitParticles, hit.point, Quaternion.identity);
 
-                // code to kill dalek   // need to work out how to keep track of damage seperately (or just assume that they won't
-                // fight more than one at a time and just use a counter
             }
             StartCoroutine(ShotEffect());
         }
@@ -86,7 +82,7 @@ public class RayCastShoot : MonoBehaviour
     {
         lineRenderer.enabled = true;
         source.Play();
-        smokeParticles.Play();
+        //smokeParticles.Play();
         shootFlare.SetActive(true);
         yield return shotLength;
         lineRenderer.enabled = false;
