@@ -62,6 +62,7 @@ public class RayCastShoot : MonoBehaviour
                         {
                             EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
                             ec.isDead = true;
+                            this.damageToEnemy = 0;
                         }
                     }
                 }
