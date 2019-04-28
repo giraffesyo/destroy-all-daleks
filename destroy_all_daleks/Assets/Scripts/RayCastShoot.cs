@@ -8,7 +8,7 @@ public class RayCastShoot : MonoBehaviour
     public float fireRate = .25f;
     public float range = 50;
     public ParticleSystem smokeParticles;
-    public GameObject hitParticles;
+    //public GameObject hitParticles; // not using yet
     public GameObject shootFlare;
     public int damage = 1;
     public Transform gunEnd;
@@ -50,7 +50,7 @@ public class RayCastShoot : MonoBehaviour
 
                 lineRenderer.SetPosition(0, gunEnd.position);
                 lineRenderer.SetPosition(1, hit.point);
-                Instantiate(hitParticles, hit.point, Quaternion.identity);
+                //Instantiate(hitParticles, hit.point, Quaternion.identity);
 
                 // code to kill dalek   // need to work out how to keep track of damage seperately (or just assume that they won't
                 // fight more than one at a time and just use a counter
