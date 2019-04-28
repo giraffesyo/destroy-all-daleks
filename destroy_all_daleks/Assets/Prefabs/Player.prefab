@@ -324,7 +324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6083295821487776523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 22, y: 0, z: 22}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children:
   - {fileID: 6083295822566679484}
@@ -728,6 +728,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6083295821487554347}
     m_Modifications:
+    - target: {fileID: 4100363416297929875, guid: c400bcb159a0747c68ad6f3c228f989a,
+        type: 3}
+      propertyPath: m_Name
+      value: FirstPersonCharacter
+      objectReference: {fileID: 0}
     - target: {fileID: 4100363416298217651, guid: c400bcb159a0747c68ad6f3c228f989a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -783,10 +788,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4100363416297929875, guid: c400bcb159a0747c68ad6f3c228f989a,
+    - target: {fileID: 4100363416297733809, guid: c400bcb159a0747c68ad6f3c228f989a,
         type: 3}
-      propertyPath: m_Name
-      value: FirstPersonCharacter
+      propertyPath: m_CullingMask.m_Bits
+      value: 6967
       objectReference: {fileID: 0}
     - target: {fileID: 8908645186388540052, guid: c400bcb159a0747c68ad6f3c228f989a,
         type: 3}
@@ -812,11 +817,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4100363416297733809, guid: c400bcb159a0747c68ad6f3c228f989a,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 6967
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4100363415557082516, guid: c400bcb159a0747c68ad6f3c228f989a, type: 3}
