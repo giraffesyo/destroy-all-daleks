@@ -16,6 +16,8 @@ public class Laser : MonoBehaviour
 
     EnemyController ec;
     PlayerUIScript HUD;
+    GameObject hud;
+
     bool isDead;
 
     void Awake()
@@ -27,7 +29,8 @@ public class Laser : MonoBehaviour
         line.startWidth = 0.07f;
         ec = GetComponentInParent<EnemyController>();
         laserSound = GetComponent<AudioSource>();
-        HUD = GameObject.FindGameObjectWithTag("HUD").GetComponent<PlayerUIScript>();
+        hud = GameObject.FindGameObjectWithTag("HUD");
+        HUD = hud.GetComponent<PlayerUIScript>();
     }
 
     void Update()
@@ -63,6 +66,7 @@ public class Laser : MonoBehaviour
         if (Physics.Raycast(ray, out hit, shotDistance))
         {
             line.SetPosition(1, hit.point);
+            
             if (hit.transform == player)
             {
                 //damagePlayer();

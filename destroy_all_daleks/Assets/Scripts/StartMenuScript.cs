@@ -21,12 +21,13 @@ public class StartMenuScript : MonoBehaviour
         isSettingToggles = false;
         hudScript = hud.GetComponent<PlayerUIScript>();
 
-        hud.SetActive(false);
+        //hud.SetActive(false);
 
         toggles = System.Array.ConvertAll(GetComponentsInChildren(typeof(Toggle), true), (t => (Toggle)t));
         musicToggle = toggles[0];
         heartBeatToggle = toggles[1];
         breathToggle = toggles[2];
+        StartCoroutine("DisableHUD");
     }
 
     private void OnEnable()
@@ -108,5 +109,11 @@ public class StartMenuScript : MonoBehaviour
         {
             isSettingToggles = false;
         }
+    }
+
+    IEnumerator DisableHUD()
+    {
+        yield return new WaitForSeconds(0.001f);
+        this.gameObject.SetActive(false);
     }
 }
