@@ -15,6 +15,7 @@ public class Laser : MonoBehaviour
     Transform player;
 
     EnemyController ec;
+    PlayerUIScript HUD;
     bool isDead;
 
     void Awake()
@@ -26,6 +27,7 @@ public class Laser : MonoBehaviour
         line.startWidth = 0.07f;
         ec = GetComponentInParent<EnemyController>();
         laserSound = GetComponent<AudioSource>();
+        HUD = GameObject.FindGameObjectWithTag("HUD").GetComponent<PlayerUIScript>();
     }
 
     void Update()
@@ -64,7 +66,19 @@ public class Laser : MonoBehaviour
             if (hit.transform == player)
             {
                 //damagePlayer();
-                Debug.Log("Hit the player");
+                Debug.Log("Hit player");
+                if (this.transform.parent.name == "Dalek")
+                {
+                    HUD.Damage(5);
+                }
+                else if (this.transform.parent.name == "Dalek - Blue")
+                {
+                    HUD.Damage(10);
+                }
+                else if (this.transform.parent.name == "Dalek - Gold")
+                {
+                    HUD.Damage(20);
+                }
             }
         }
         else
