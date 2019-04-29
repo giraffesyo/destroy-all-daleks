@@ -198,20 +198,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &3887299826276112147
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971736439886968655}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 41f07ad8c3a26674cbe7615ef2990d7d, type: 3}
 --- !u!1 &2280607242196895478
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,11 +617,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4218762717794316139}
     m_Modifications:
-    - target: {fileID: 5079978248836738527, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
-        type: 3}
-      propertyPath: m_Name
-      value: Door
-      objectReference: {fileID: 0}
     - target: {fileID: 7587204692100636154, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -690,6 +671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079978248836738527, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: m_Name
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 8241398230259818286, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
         type: 3}
