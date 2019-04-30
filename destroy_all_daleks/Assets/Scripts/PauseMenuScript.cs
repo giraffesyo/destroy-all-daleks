@@ -100,7 +100,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (!isSettingToggles)
         {
-            hudScript.playMusic = !hudScript.playMusic;
+            //hudScript.playMusic = !hudScript.playMusic;
         }
         else
         {

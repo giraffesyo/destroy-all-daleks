@@ -12,6 +12,8 @@ public class AreaLoad : MonoBehaviour
     public GameObject[] roomArray;
     public GameObject parentObject;
     public bool tester = false;
+    public GameObject Enemy;
+
 
     private Room[,] array;
     public Room[] deadendRooms;
@@ -109,12 +111,9 @@ public class AreaLoad : MonoBehaviour
                 }
                
             }
+            
         }
-        // floors = parentObject.GetComponentsInChildren<NavMeshSurface>();
-        //foreach(NavMeshSurface floor in floors)
-        //{
-        //   floor.BuildNavMesh();
-        //}
+    
         navMesh.BuildNavMesh();
 
     }

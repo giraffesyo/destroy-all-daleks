@@ -19,6 +19,7 @@ public class RayCastShoot : MonoBehaviour
     private AudioSource source;
     private float nextFireTime;
     private int damageToEnemy = 0;
+    public bool hasBullets = true;
 
     PlayerUIScript HUD;
 
@@ -36,7 +37,7 @@ public class RayCastShoot : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(transform.position, transform.forward);
 
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFireTime)
+        if (hasBullets && Input.GetButtonDown("Fire1") && Time.time > nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
             HUD.Fire();
