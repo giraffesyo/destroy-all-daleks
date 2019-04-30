@@ -66,7 +66,7 @@ public class PlayerUIScript : MonoBehaviour
 
     public GameObject PauseMenu;
     public GameObject GameOverMenu;
-
+    public RayCastShoot rcshoot;
     
     //sides: 0-left, 1-forward, 2-right, 3-behind, 4-all, 5-heal
     private enum Side { left, forward, right, behind, all, heal }
@@ -239,6 +239,10 @@ public class PlayerUIScript : MonoBehaviour
     {
         ammoGun -= 1;
         ammoGunText.text = ammoGun.ToString();
+        if (ammoGun <= 0)
+        {
+            rcshoot.hasBullets = false;
+        }
         //if the gun is out of bullets reload
         if (ammoGun <= 0 && ammoReserve > 0)
         {
@@ -255,6 +259,7 @@ public class PlayerUIScript : MonoBehaviour
             int ammoDifference = maxAmmoGun - ammoGun;
             ammoGun = maxAmmoGun;
             ammoReserve -= ammoDifference;
+            rcshoot.hasBullets = true;
         }
         else if (ammoReserve > 0)
         {
@@ -270,6 +275,7 @@ public class PlayerUIScript : MonoBehaviour
             }
             ammoGun += toAdd;
             ammoReserve -= toAdd;
+            rcshoot.hasBullets = true;
         }
 
         ammoGunText.text = ammoGun.ToString();
