@@ -13,6 +13,7 @@ TagManager:
   - player
   - enemy
   - Fire
+  - DeathSounds
   layers:
   - Default
   - TransparentFX

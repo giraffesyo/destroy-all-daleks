@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     NavMeshAgent nav;
     public float rotationSpeed = .01f;
     public float startChaseRange = 10.0f;
+    public DeathSounds deathsounds;
 
     public bool isDead = false;
 
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour, IDamageable
  
     void Awake()
     {
+        deathsounds = GameObject.FindObjectOfType<DeathSounds>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         if (this.gameObject.name == "Dalek")
@@ -75,6 +77,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     IEnumerator DestroyDalek()
     {
+        deathsounds.Play(exterminateSounds[0]);
         yield return new WaitForSeconds(3.0f);
         Destroy(this.gameObject);
     }
