@@ -59,6 +59,7 @@ public class PauseMenuScript : MonoBehaviour
 
     public void NewGame()
     {
+        Time.timeScale = 1;
         hud.SetActive(true);
         hudScript.NewGame();
         this.gameObject.SetActive(false);
