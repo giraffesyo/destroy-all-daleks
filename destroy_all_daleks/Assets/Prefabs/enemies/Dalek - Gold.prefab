@@ -5556,9 +5556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390418226e02b854c82958ce4c40fdcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDistance: 10
-  reloadTime: 2
-  fadeTime: 0.1
+  shotDistance: 50
+  reloadTime: 1
+  fadeTime: 0.07
 --- !u!120 &901800752618151234
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5619,7 +5619,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.7169812, g: 0.64882255, b: 0.19953722, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
