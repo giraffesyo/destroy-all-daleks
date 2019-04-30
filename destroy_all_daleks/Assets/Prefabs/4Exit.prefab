@@ -566,17 +566,21 @@ MonoBehaviour:
   hasWestExit: 1
   hasNorthExit: 1
   hasSouthExit: 1
-  numberOfDoors: 0
+  numberOfDoors: 4
   partOfMap: 0
-  row: 0
-  col: 0
+  row: 2
+  col: 2
   rotation: 0
   hasDalek: 0
   Daleks:
   - {fileID: 4538725361427028065}
   - {fileID: 4893415674948094670}
   - {fileID: 5893115916588940045}
-  doors: []
+  doors:
+  - {fileID: 2415903231929786833}
+  - {fileID: 2347729668552479485}
+  - {fileID: 3240368029559425761}
+  - {fileID: 6920023122672090457}
 --- !u!1 &4497323756893531747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1106,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: parentRoom
+      value: 
+      objectReference: {fileID: 6781057575906625084}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: southDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8241398230259818286, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
         type: 3}
       propertyPath: m_Controller
@@ -1115,6 +1129,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1153707257838125724}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2415903231929786833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1153707257838125724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e08f71c73f5d146a90b43ce8ad43e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1229770919743369648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1182,6 +1208,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: parentRoom
+      value: 
+      objectReference: {fileID: 6781057575906625084}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: westDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8241398230259818286, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
         type: 3}
       propertyPath: m_Controller
@@ -1195,6 +1231,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1229770919743369648}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2347729668552479485 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1229770919743369648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e08f71c73f5d146a90b43ce8ad43e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2125083430477883820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1262,6 +1310,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: parentRoom
+      value: 
+      objectReference: {fileID: 6781057575906625084}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: eastDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8241398230259818286, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
         type: 3}
       propertyPath: m_Controller
@@ -1275,6 +1333,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2125083430477883820}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3240368029559425761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2125083430477883820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e08f71c73f5d146a90b43ce8ad43e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3541951270615389425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1514,6 +1584,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: parentRoom
+      value: 
+      objectReference: {fileID: 6781057575906625084}
+    - target: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+        type: 3}
+      propertyPath: northDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8241398230259818286, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
         type: 3}
       propertyPath: m_Controller
@@ -1527,6 +1607,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5876377066794130964}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6920023122672090457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3568479913241469773, guid: 7f9e8e0711e2f304fa425d67cf6fcbe9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5876377066794130964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e08f71c73f5d146a90b43ce8ad43e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8674211090478902017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1627,7 +1719,7 @@ PrefabInstance:
     - target: {fileID: 4498230063753019339, guid: 4e90bcae052f4c7428428565025fd78f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4498230063753019336, guid: 4e90bcae052f4c7428428565025fd78f,
         type: 3}

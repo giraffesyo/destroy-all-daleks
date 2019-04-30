@@ -78,6 +78,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     IEnumerator DestroyDalek()
     {
         deathsounds.Play(exterminateSounds[0]);
+
         yield return new WaitForSeconds(3.0f);
         Destroy(this.gameObject);
     }
