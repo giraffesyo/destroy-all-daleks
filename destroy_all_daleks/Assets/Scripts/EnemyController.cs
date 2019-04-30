@@ -28,15 +28,15 @@ public class EnemyController : MonoBehaviour, IDamageable
         nav = GetComponent<NavMeshAgent>();
         if (this.gameObject.name == "Dalek")
         {
-            health = 5;
+            health = 1;
         }
         else if (this.gameObject.name == "Dalek - Blue")
         {
-            health = 10;
+            health = 2;
         }
         else if (this.gameObject.name == "Dalek - Gold")
         {
-            health = 15;
+            health = 3;
         }
 
         exterminateSounds = this.gameObject.GetComponents<AudioSource>();
