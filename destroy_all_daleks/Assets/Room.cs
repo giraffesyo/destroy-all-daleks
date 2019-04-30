@@ -14,20 +14,24 @@ public class Room : MonoBehaviour
     public int row;
     public int col;
     public float rotation;
- 
+    public bool hasDalek;
+    public GameObject[] Daleks;
 
     public DoorScript[] doors;
     void Start()
     {
-        
-      
+        if (hasDalek)
+        {
+            Daleks[Random.Range(0, Daleks.Length)].SetActive(true);
+        }
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
     public bool isDeadend()
     {
         if (getNumberofDoors() == 1)
@@ -72,7 +76,7 @@ public class Room : MonoBehaviour
         // S = 180
         // W = 270
 
-         
+
         doors = this.GetComponentsInChildren<DoorScript>();
         setNumberofDoors();
         foreach (DoorScript door in doors)
@@ -107,7 +111,7 @@ public class Room : MonoBehaviour
         foreach (DoorScript door in doors)
         {
             if (door.eastDoor)
-                hasEastExit=true;
+                hasEastExit = true;
             if (door.northDoor)
                 hasNorthExit = true;
             if (door.westDoor)
@@ -116,6 +120,6 @@ public class Room : MonoBehaviour
                 hasSouthExit = true;
         }
     }
-    
+
 
 }
