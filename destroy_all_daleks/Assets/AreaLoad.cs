@@ -121,7 +121,7 @@ public class AreaLoad : MonoBehaviour
 
         }
 
-        navMesh.BuildNavMesh();
+        //navMesh.BuildNavMesh();
 
     }
 
