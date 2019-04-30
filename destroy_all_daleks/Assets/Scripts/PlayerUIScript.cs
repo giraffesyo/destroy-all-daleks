@@ -102,7 +102,8 @@ public class PlayerUIScript : MonoBehaviour
         HeartBeat();
         FadeHitIndicators(Time.deltaTime);
         SetVision(Time.deltaTime);
-    }
+
+       }
 
     private void TestAction()
     {
@@ -579,7 +580,7 @@ public class PlayerUIScript : MonoBehaviour
     public int GetNumberOfDaleks()
     {
         //this should return the number of daleks generated for the current floor
-        return 12;
+        return GameObject.FindGameObjectsWithTag("enemy").Length;
     }
 
     public void SwitchMusic()

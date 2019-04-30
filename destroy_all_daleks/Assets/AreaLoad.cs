@@ -373,20 +373,5 @@ public class AreaLoad : MonoBehaviour
 
         }
 
-
-
-
-
-
-
-
-        
-        
-        
-            
-        
-        
-
-        
     }
 }
