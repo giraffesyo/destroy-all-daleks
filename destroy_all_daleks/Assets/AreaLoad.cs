@@ -27,7 +27,7 @@ public class AreaLoad : MonoBehaviour
     private List<Room> EastExitRooms = new List<Room>();
     private List<Room> WestExitRooms = new List<Room>();
     private List<Room> NorthExitRooms = new List<Room>();
-    private List<Room> SouthExitRooms= new List<Room>();
+    private List<Room> SouthExitRooms = new List<Room>();
 
     private GameObject gObj;
     public int count;
@@ -49,19 +49,19 @@ public class AreaLoad : MonoBehaviour
         startingRoomScript.setDoors();
         startingRoomScript.setRow(size / 2);
         startingRoomScript.setCol(size / 2);
-        foreach(Room room in roomsGlobal)
+        foreach (Room room in roomsGlobal)
         {
             room.setDoors();
             roomArray[i] = room.gameObject;
             i++;
         }
         array = new Room[size, size];
-       
-        foreach(GameObject roomPrefab in roomArray)
+
+        foreach (GameObject roomPrefab in roomArray)
         {
-            
+
             Room room = roomPrefab.GetComponent<Room>();
-            if (room.hasEastExit) 
+            if (room.hasEastExit)
                 EastExitRooms.Add(room);
             if (room.hasNorthExit)
                 NorthExitRooms.Add(room);
@@ -70,7 +70,7 @@ public class AreaLoad : MonoBehaviour
             if (room.hasWestExit)
                 WestExitRooms.Add(room);
         }
-       
+
         BuildLevel(startingRoomScript);
         GenerateLevel();
     }
@@ -79,7 +79,7 @@ public class AreaLoad : MonoBehaviour
         tester = false;
         firstIteration = true;
         Room[] roomsToDestroy = parentObject.GetComponentsInChildren<Room>();
-        foreach(Room room in roomsToDestroy)
+        foreach (Room room in roomsToDestroy)
         {
             Destroy(room.gameObject);
         }
@@ -95,7 +95,7 @@ public class AreaLoad : MonoBehaviour
         {
             reGenerate();
         }
-    
+
     }
     public void GenerateLevel()
     {
@@ -108,16 +108,19 @@ public class AreaLoad : MonoBehaviour
                     gObj = Instantiate(array[i, j].gameObject);
                     if (Random.Range(0, 2) == 0)
                     {
-                        array[i, j].SpawnDalek();
+                        if (i != 2 && j != 2)
+                        {
+                            array[i, j].SpawnDalek();
+                        }
                     }
                     gObj.gameObject.transform.position = new Vector3(10.6f * i, 0, 10.6f * j);
                     gObj.transform.parent = parentObject.transform;
                 }
-               
+
             }
-            
+
         }
-    
+
         //navMesh.BuildNavMesh();
 
     }
@@ -131,121 +134,24 @@ public class AreaLoad : MonoBehaviour
         {
             roomCanidates.Add(gRoom);
         }
-            if (row != 0 && array[row - 1, col] != null)
+        if (row != 0 && array[row - 1, col] != null)
+        {
+            if (array[row - 1, col].hasEastExit)
             {
-                if (array[row - 1, col].hasEastExit)
+                foreach (Room room in WestExitRooms)
                 {
-                    foreach (Room room in WestExitRooms)
-                    {
-                        if (!roomCanidates.Contains(room))
-                            roomCanidates.Add(room);
-                    }
-
-                    foreach (Room room in roomCanidates)
-                    {
-                        if (!WestExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-
+                    if (!roomCanidates.Contains(room))
+                        roomCanidates.Add(room);
                 }
-                else
-                {
-                    foreach (Room room in WestExitRooms)
-                    {
-                        if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-                }
-            }
-            if (row < size - 1 && array[row + 1, col] != null)
-            {
 
-                if (array[row + 1, col].hasWestExit)
+                foreach (Room room in roomCanidates)
                 {
-                    foreach (Room room in EastExitRooms)
-                    {
-                        if (!roomCanidates.Contains(room))
-                            roomCanidates.Add(room);
-                    }
-                    foreach (Room room in roomCanidates)
-                    {
-                        if (!EastExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-
-
-                }
-                else
-                {
-                    foreach (Room room in EastExitRooms)
-                    {
-                        if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-                }
-            }
-            if (col < size - 1 && array[row, col + 1] != null)
-            {
-                if (array[row, col + 1].hasSouthExit)
-                {
-                    foreach (Room room in NorthExitRooms)
-                    {
-
-                        if (!roomCanidates.Contains(room))
-                            roomCanidates.Add(room);
-                    }
-                    foreach (Room room in roomCanidates)
-                    {
-                        if (!NorthExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-
-                }
-                else
-                {
-                    foreach (Room room in NorthExitRooms)
-                    {
-                        if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-                }
-            }
-            if (col != 0 && array[row, col - 1] != null)
-            {
-                if (array[row, col - 1].hasNorthExit)
-                {
-                    foreach (Room room in SouthExitRooms)
-                    {
-                        if (!roomCanidates.Contains(room))
-                            roomCanidates.Add(room);
-                    }
-
-                    foreach (Room room in roomCanidates)
-                    {
-                        if (!SouthExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-
-                }
-                else
-                {
-                    foreach (Room room in SouthExitRooms)
-                    {
-                        if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
-                            lstToRemove.Add(room);
-                    }
-                }
-            }
-
-            if (row == size - 1)
-            {
-                foreach (Room room in EastExitRooms)
-                {
-                    if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                    if (!WestExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
                         lstToRemove.Add(room);
                 }
+
             }
-            if (row == 0)
+            else
             {
                 foreach (Room room in WestExitRooms)
                 {
@@ -253,15 +159,52 @@ public class AreaLoad : MonoBehaviour
                         lstToRemove.Add(room);
                 }
             }
-            if (col == 0)
+        }
+        if (row < size - 1 && array[row + 1, col] != null)
+        {
+
+            if (array[row + 1, col].hasWestExit)
             {
-                foreach (Room room in SouthExitRooms)
+                foreach (Room room in EastExitRooms)
+                {
+                    if (!roomCanidates.Contains(room))
+                        roomCanidates.Add(room);
+                }
+                foreach (Room room in roomCanidates)
+                {
+                    if (!EastExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                        lstToRemove.Add(room);
+                }
+
+
+            }
+            else
+            {
+                foreach (Room room in EastExitRooms)
                 {
                     if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
                         lstToRemove.Add(room);
                 }
             }
-            if (col == size - 1)
+        }
+        if (col < size - 1 && array[row, col + 1] != null)
+        {
+            if (array[row, col + 1].hasSouthExit)
+            {
+                foreach (Room room in NorthExitRooms)
+                {
+
+                    if (!roomCanidates.Contains(room))
+                        roomCanidates.Add(room);
+                }
+                foreach (Room room in roomCanidates)
+                {
+                    if (!NorthExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                        lstToRemove.Add(room);
+                }
+
+            }
+            else
             {
                 foreach (Room room in NorthExitRooms)
                 {
@@ -269,33 +212,93 @@ public class AreaLoad : MonoBehaviour
                         lstToRemove.Add(room);
                 }
             }
-            if(lstToRemove.Count == 0)
+        }
+        if (col != 0 && array[row, col - 1] != null)
+        {
+            if (array[row, col - 1].hasNorthExit)
             {
-                foreach(Room room in deadendRooms)
+                foreach (Room room in SouthExitRooms)
                 {
+                    if (!roomCanidates.Contains(room))
+                        roomCanidates.Add(room);
+                }
+
+                foreach (Room room in roomCanidates)
+                {
+                    if (!SouthExitRooms.Contains(room) && roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                        lstToRemove.Add(room);
+                }
+
+            }
+            else
+            {
+                foreach (Room room in SouthExitRooms)
+                {
+                    if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                        lstToRemove.Add(room);
+                }
+            }
+        }
+
+        if (row == size - 1)
+        {
+            foreach (Room room in EastExitRooms)
+            {
+                if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
                     lstToRemove.Add(room);
-                }
-                
             }
-            foreach (Room room in lstToRemove)
+        }
+        if (row == 0)
+        {
+            foreach (Room room in WestExitRooms)
             {
-                if (roomCanidates.Contains(room))
-                {
-                    roomCanidates.Remove(room);
-                }
+                if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                    lstToRemove.Add(room);
             }
-            return roomCanidates;
-        
+        }
+        if (col == 0)
+        {
+            foreach (Room room in SouthExitRooms)
+            {
+                if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                    lstToRemove.Add(room);
+            }
+        }
+        if (col == size - 1)
+        {
+            foreach (Room room in NorthExitRooms)
+            {
+                if (roomCanidates.Contains(room) && !lstToRemove.Contains(room))
+                    lstToRemove.Add(room);
+            }
+        }
+        if (lstToRemove.Count == 0)
+        {
+            foreach (Room room in deadendRooms)
+            {
+                lstToRemove.Add(room);
+            }
+
+        }
+        foreach (Room room in lstToRemove)
+        {
+            if (roomCanidates.Contains(room))
+            {
+                roomCanidates.Remove(room);
+            }
+        }
+        return roomCanidates;
+
     }
 
-   
+
 
     public void BuildLevel(Room current)
     {
 
-        
+
         List<Room> finalRoomCanidates = new List<Room>();
-        foreach(DoorScript door in current.getDoors())
+        foreach (DoorScript door in current.getDoors())
         {
             bool island = true;
             int row = door.parentRoom.getRow();
@@ -308,27 +311,27 @@ public class AreaLoad : MonoBehaviour
             else
             {
 
-                if (col < size - 1 && door.northDoor && array[row, col+1] == null)
+                if (col < size - 1 && door.northDoor && array[row, col + 1] == null)
                 {
-                    col = col +1;
+                    col = col + 1;
                     finalRoomCanidates = checkSurroundings(row, col);
                     island = false;
                 }
-                else if (row!=0 && door.westDoor && array[row-1, col] == null)
+                else if (row != 0 && door.westDoor && array[row - 1, col] == null)
                 {
                     row = row - 1;
                     finalRoomCanidates = checkSurroundings(row, col);
                     island = false;
 
                 }
-                else if (col !=0 && door.southDoor && array[row, col-1] == null)
+                else if (col != 0 && door.southDoor && array[row, col - 1] == null)
                 {
                     col = col - 1;
                     finalRoomCanidates = checkSurroundings(row, col);
                     island = false;
 
                 }
-                else if (row<size-1 && door.eastDoor && array[row+1, col] == null)
+                else if (row < size - 1 && door.eastDoor && array[row + 1, col] == null)
                 {
                     row = row + 1;
                     finalRoomCanidates = checkSurroundings(row, col);
@@ -338,15 +341,15 @@ public class AreaLoad : MonoBehaviour
                 }
                 if (finalRoomCanidates.Count != 0 && !island)
                 {
-                    
-                    current = finalRoomCanidates[Random.Range(0, finalRoomCanidates.Count-1)];           
+
+                    current = finalRoomCanidates[Random.Range(0, finalRoomCanidates.Count - 1)];
                     if (array[row, col] == null)
                     {
                         array[row, col] = current;
                     }
-                    
 
-                }     
+
+                }
                 else
                 {
                     current = empty.GetComponent<Room>();
@@ -373,7 +376,7 @@ public class AreaLoad : MonoBehaviour
                 current.setDoors();
 
             }
-                
+
 
         }
 
