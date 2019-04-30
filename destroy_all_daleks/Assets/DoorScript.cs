@@ -62,7 +62,7 @@ public class DoorScript : MonoBehaviour
         setOrientation();
         
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
      
         if (collision.gameObject.tag.Equals("Player")|| (collision.gameObject.tag.Equals("enemy")))
