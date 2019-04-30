@@ -72,7 +72,7 @@ public class Laser : MonoBehaviour
             if (hit.collider == player)
             {
                 //damagePlayer();
-                Debug.Log("Hit player");
+                //Debug.Log("Hit player");
                 if (this.transform.parent.name == "Dalek")
                 {
                     HUD.Damage(5);

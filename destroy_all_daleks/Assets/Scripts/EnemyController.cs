@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
     Transform player;
     NavMeshAgent nav;
@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]
     public int health;
 
+ 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -63,5 +64,11 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         Destroy(this.gameObject);
+    }
+
+    public void Damage(int damage, Vector3 hitPoint)
+    {
+        this.health -= damage;
+        Debug.Log($"Dalek {this.gameObject.name} was hit for {damage} and has {health} health remaining");
     }
 }

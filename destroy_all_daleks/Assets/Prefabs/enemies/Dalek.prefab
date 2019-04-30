@@ -1185,6 +1185,7 @@ MonoBehaviour:
   rotationSpeed: 2
   startChaseRange: 10
   isDead: 0
+  health: 0
 --- !u!195 &5652694635633323408
 NavMeshAgent:
   m_ObjectHideFlags: 0
