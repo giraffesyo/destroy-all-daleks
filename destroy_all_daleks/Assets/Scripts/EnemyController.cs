@@ -12,14 +12,33 @@ public class EnemyController : MonoBehaviour
 
     public bool isDead = false;
 
+    [HideInInspector]
+    public int health;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
+        if (this.gameObject.name == "Dalek")
+        {
+            health = 5;
+        }
+        else if (this.gameObject.name == "Dalek - Blue")
+        {
+            health = 10;
+        }
+        else if (this.gameObject.name == "Dalek - Gold")
+        {
+            health = 15;
+        }
     }
 
     void Update()
     {
+        if (health <= 0)
+        {
+            isDead = true;
+        }
         if (!isDead)
         {
             var distance = Vector3.Distance(player.transform.position, this.transform.position);

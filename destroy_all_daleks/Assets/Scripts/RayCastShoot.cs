@@ -21,6 +21,7 @@ public class RayCastShoot : MonoBehaviour
     private int damageToEnemy = 0;
 
     PlayerUIScript HUD;
+    EnemyController ec;
 
     void Awake()
     {
@@ -45,32 +46,8 @@ public class RayCastShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit, range))
             {
                 lineRenderer.SetPosition(1, hit.point);
-                if (hit.collider.gameObject.CompareTag("enemy"))
-                {
-                    //damageDalek();
-                    this.damageToEnemy++;
-                    if (hit.collider.gameObject.name == "Dalek" && this.damageToEnemy >= 5)
-                    {
-                        EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                        ec.isDead = true;
-                        HUD.DalekKilled();
-                        this.damageToEnemy = 0;
-                    }
-                    else if (hit.collider.gameObject.name == "Dalek - Blue" && this.damageToEnemy >= 10)
-                    {
-                        EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                        ec.isDead = true;
-                        HUD.DalekKilled();
-                        this.damageToEnemy = 0;
-                    }
-                    else if (hit.collider.gameObject.name == "Dalek - Gold" && this.damageToEnemy >= 15)
-                    {
-                        EnemyController ec = hit.rigidbody.GetComponent<EnemyController>();
-                        ec.isDead = true;
-                        HUD.DalekKilled();
-                        this.damageToEnemy = 0;
-                    }
-                }
+                ec = hit.rigidbody.GetComponent<EnemyController>();
+                ec.health--;
             }
             else
             {

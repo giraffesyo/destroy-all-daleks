@@ -12,7 +12,8 @@ public class Laser : MonoBehaviour
     public float fadeTime = 0.1f;
 
     private AudioSource laserSound;
-    Transform player;
+    //Transform player;
+    CapsuleCollider player;
 
     EnemyController ec;
     PlayerUIScript HUD;
@@ -24,7 +25,8 @@ public class Laser : MonoBehaviour
     {
         line = GetComponent<LineRenderer>();
         line.enabled = false;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider>();
         line.endWidth = 0.1f;
         line.startWidth = 0.07f;
         ec = GetComponentInParent<EnemyController>();
@@ -67,7 +69,7 @@ public class Laser : MonoBehaviour
         {
             line.SetPosition(1, hit.point);
             
-            if (hit.transform == player)
+            if (hit.collider == player)
             {
                 //damagePlayer();
                 Debug.Log("Hit player");
