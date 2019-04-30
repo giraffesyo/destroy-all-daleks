@@ -53,6 +53,7 @@ public class PauseMenuScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Unpause();
+
         }
     }
 
@@ -134,6 +135,7 @@ public class PauseMenuScript : MonoBehaviour
 
     private void Unpause()
     {
+        Time.timeScale = 1;
         hud.SetActive(true);
         this.gameObject.SetActive(false);
     }

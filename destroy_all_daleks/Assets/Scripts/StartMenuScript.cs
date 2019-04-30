@@ -37,6 +37,7 @@ public class StartMenuScript : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
         AudioSource[] toAssign = this.gameObject.GetComponents<AudioSource>();
         AudioSource whoThemeIntro = toAssign[0];
         AudioSource whoThemeLoop = toAssign[1];
@@ -70,6 +71,7 @@ public class StartMenuScript : MonoBehaviour
 
     public void NewGame()
     {
+        Time.timeScale = 1;
         hud.SetActive(true);
         hudScript.NewGame();
         this.gameObject.SetActive(false);

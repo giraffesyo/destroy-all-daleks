@@ -570,6 +570,8 @@ public class PlayerUIScript : MonoBehaviour
 
     public void Pause()
     {
+
+        Time.timeScale = 0;
         invincible = true;
         PauseMenu.SetActive(true);
         this.gameObject.SetActive(false);
