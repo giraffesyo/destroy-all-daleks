@@ -103,6 +103,10 @@ public class AreaLoad : MonoBehaviour
             {
                 if (array[i, j] != null)
                 {
+                    if (Random.Range(0, 1) == 0)
+                    {
+                        array[i, j].hasDalek = true;
+                    }
                     gObj = Instantiate(array[i, j].gameObject);
                     gObj.gameObject.transform.position = new Vector3(10.6f * i, 0, 10.6f * j);
                     gObj.transform.parent = parentObject.transform;

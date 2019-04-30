@@ -459,6 +459,11 @@ public class PlayerUIScript : MonoBehaviour
         }
     }
 
+    private void CountDaleks()
+    {
+
+    }
+
     private void FadeHitIndicators(float deltaTime)
     {
         Image[] toLoop = new Image[toFadeOut.Count];
