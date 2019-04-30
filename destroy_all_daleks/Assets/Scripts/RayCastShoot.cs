@@ -22,7 +22,6 @@ public class RayCastShoot : MonoBehaviour
     public bool hasBullets = true;
 
     PlayerUIScript HUD;
-    EnemyController ec;
 
     void Awake()
     {
@@ -47,11 +46,17 @@ public class RayCastShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit, range))
             {
                 lineRenderer.SetPosition(1, hit.point);
-                if (hit.collider.gameObject.CompareTag("enemy"))
+                IDamageable dmgScript = hit.collider.gameObject.GetComponent<IDamageable>();
+                if (dmgScript != null)
                 {
-                    ec = hit.rigidbody.GetComponent<EnemyController>();
-                    ec.health--;
+                    dmgScript.Damage(damage, hit.point);
                 }
+                /*
+                if (hit.rigidbody != null)
+                {
+                              
+                    hit.rigidbody.AddForce(-hit.normal * 100f);
+                }*/
             }
             else
             {

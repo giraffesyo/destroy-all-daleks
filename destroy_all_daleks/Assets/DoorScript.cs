@@ -62,13 +62,13 @@ public class DoorScript : MonoBehaviour
         setOrientation();
         
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
      
         if (collision.gameObject.tag.Equals("Player")|| (collision.gameObject.tag.Equals("enemy")))
         {
             anim.Play("OpenClose");
-            Debug.Log("Temp");
+            //Debug.Log("Temp");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -76,7 +76,7 @@ public class DoorScript : MonoBehaviour
         if (other.gameObject.tag.Equals("Player") || (other.gameObject.tag.Equals("enemy")))
         {
             anim.Play("close");
-            Debug.Log("Temp");
+            //Debug.Log("Temp");
         }
     }
 }
