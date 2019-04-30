@@ -14,16 +14,18 @@ public class Room : MonoBehaviour
     public int row;
     public int col;
     public float rotation;
-    public bool hasDalek;
+    public bool hasDalek = false;
     public GameObject[] Daleks;
 
     public DoorScript[] doors;
     void Start()
     {
-        if (hasDalek)
-        {
-            Daleks[Random.Range(0, Daleks.Length)].SetActive(true);
-        }
+
+    }
+
+    public void SpawnDalek()
+    {
+        Daleks[Random.Range(0, Daleks.Length)].SetActive(true);
     }
 
     // Update is called once per frame
