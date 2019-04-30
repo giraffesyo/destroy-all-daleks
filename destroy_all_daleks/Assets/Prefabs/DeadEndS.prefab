@@ -198,6 +198,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &246074312990224830
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971736439886968655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300008, guid: 53055dc07ea3e794fa535fe677d07c6c, type: 3}
 --- !u!1 &2280607242196895478
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,16 +847,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4992903082559952650}
     m_Modifications:
-    - target: {fileID: 1498010417300538362, guid: 2b898d09b502ebe479fc02a1343c0067,
-        type: 3}
-      propertyPath: m_Name
-      value: Dalek - Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 1498010417300538362, guid: 2b898d09b502ebe479fc02a1343c0067,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1498010417300538361, guid: 2b898d09b502ebe479fc02a1343c0067,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -896,6 +900,16 @@ PrefabInstance:
     - target: {fileID: 1498010417300538361, guid: 2b898d09b502ebe479fc02a1343c0067,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498010417300538362, guid: 2b898d09b502ebe479fc02a1343c0067,
+        type: 3}
+      propertyPath: m_Name
+      value: Dalek - Gold
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498010417300538362, guid: 2b898d09b502ebe479fc02a1343c0067,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
