@@ -114,6 +114,6 @@ public class StartMenuScript : MonoBehaviour
     IEnumerator DisableHUD()
     {
         yield return new WaitForSeconds(0.001f);
-        this.gameObject.SetActive(false);
+        hud.SetActive(false);
     }
 }
