@@ -46,8 +46,11 @@ public class RayCastShoot : MonoBehaviour
             if (Physics.Raycast(ray, out hit, range))
             {
                 lineRenderer.SetPosition(1, hit.point);
-                ec = hit.rigidbody.GetComponent<EnemyController>();
-                ec.health--;
+                if (hit.collider.gameObject.CompareTag("enemy"))
+                {
+                    ec = hit.rigidbody.GetComponent<EnemyController>();
+                    ec.health--;
+                }
             }
             else
             {
